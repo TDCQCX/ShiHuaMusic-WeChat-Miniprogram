@@ -1,0 +1,74 @@
+<!-- user.wxml -->
+<view class="container">
+  <!-- 未登录状态 -->
+  <view class="user-container" wx:if="{{!isLoggedIn}}">
+    <view class="avatar-container">
+      <image class="avatar" src="/assets/icons/logo.svg"></image>
+    </view>
+    <view class="login-btn" bindtap="goToLogin">登录/注册</view>
+    <view class="tips">登录后可体验更多功能</view>
+  </view>
+
+  <!-- 已登录状态 -->
+  <view class="user-container" wx:else>
+    <!-- 顶部用户信息区 -->
+      <view class="profile-header" bindtap="navigateToEdit">
+        <view class="avatar-wrapper">
+          <image class="avatar" src="{{userInfo.avatarUrl || '/assets/icons/默认头像.png'}}"></image>
+        </view>
+        <view class="user-info">
+          <view class="username">{{userInfo.username || '未知用户'}}</view>
+          <view class="edit-hint">点击编辑个人信息</view>
+        </view>
+        <image class="arrow-right" src="/assets/icons/arrow-right.svg"></image>
+      </view>
+
+    <!-- 我的音乐功能区 -->
+    <view class="music-section">
+      
+      <!-- 最近播放 -->
+      <view class="music-item" bindtap="goToRecent">
+        <view class="item-icon">
+          <image src="/assets/icons/history.svg" mode="aspectFit"></image>
+        </view>
+        <view class="item-text">最近播放</view>
+        <view class="item-arrow">
+          <image src="/assets/icons/arrow-right.svg" mode="aspectFit"></image>
+        </view>
+      </view>
+
+      <!-- 我的歌单 -->
+      <view class="music-item" bindtap="goToPlaylists">
+        <view class="item-icon">
+          <image src="/assets/icons/playlist.svg" mode="aspectFit"></image>
+        </view>
+        <view class="item-text">我的歌单</view>
+        <view class="item-arrow">
+          <image src="/assets/icons/arrow-right.svg" mode="aspectFit"></image>
+        </view>
+      </view>
+
+      <!-- 我的喜欢 -->
+      <view class="music-item" bindtap="goToFavorites">
+        <view class="item-icon">
+          <image src="/assets/icons/收藏.png" mode="aspectFit"></image>
+        </view>
+        <view class="item-text">我的喜欢</view>
+        <view class="item-arrow">
+          <image src="/assets/icons/arrow-right.svg" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+
+    <!-- 退出登录按钮 -->
+    <view class="logout-section">
+      <button class="logout-btn" bindtap="handleLogout">退出登录</button>
+    </view>
+  </view>
+
+  <!-- 底部版权信息 -->
+  <copyright/>
+</view>
+
+<!-- 底部播放器组件 -->
+<player />

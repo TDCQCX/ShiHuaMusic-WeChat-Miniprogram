@@ -1,0 +1,16 @@
+{
+  "name": "music-miniprogram",
+  "private": true,
+  "version": "1.0.0",
+  "description": "ShiHua Music 微信小程序",
+  "scripts": {
+    "dev": "miniprogram-ci upload --pp ./ --pkp ./private.key --appid wx1234567890 --uv 1.0.0 --desc '开发版本' --upload-desc '开发版本' --upload-path ./ --upload-mode debug",
+    "build": "miniprogram-ci upload --pp ./ --pkp ./private.key --appid wx1234567890 --uv 1.0.0 --desc '生产版本' --upload-desc '生产版本' --upload-path ./ --upload-mode release"
+  },
+  "dependencies": {
+    "tdesign-miniprogram": "^1.11.0"
+  },
+  "devDependencies": {
+    "miniprogram-ci": "^1.8.16"
+  }
+}

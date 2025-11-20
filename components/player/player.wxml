@@ -1,0 +1,57 @@
+<!-- 底部固定播放器 -->
+<view class="player-container">
+  <!-- 主播放器区域 -->
+  <view class="player-main">
+    <!-- 歌曲信息 -->
+    <view class="player-info" bindtap="onSongInfoTap">
+      <image class="player-cover" src="{{currentSong.coverUrl || '/assets/images/default-cover.svg'}}"></image>
+      <view class="player-text">
+        <text class="player-song-name">{{currentSong.songName || '未知歌曲'}}</text>
+        <text class="player-artist-name">{{currentSong.artistName || '未知歌手'}}</text>
+      </view>
+    </view>
+
+    <!-- 播放控制 -->
+    <view class="player-controls">
+      <image class="player-btn player-btn-prev" src="/assets/icons/上一首.png" bindtap="playPrev"></image>
+      <image class="player-btn player-btn-play" 
+        src="{{isPlaying ? '/assets/icons/暂停.png' : '/assets/icons/播放.png'}}" 
+        bindtap="togglePlay"
+      ></image>
+      <image class="player-btn player-btn-next" src="/assets/icons/下一首.png" bindtap="playNext"></image>
+      <image class="player-btn player-btn-loop" 
+        wx:if="{{loopMode === 0}}"
+        src="/assets/icons/列表循环.png" 
+        bindtap="toggleLoopMode"
+      ></image>
+      <image class="player-btn player-btn-loop player-btn-active" 
+        wx:elif="{{loopMode === 1}}"
+        src="/assets/icons/单曲循环.png" 
+        bindtap="toggleLoopMode"
+      ></image>
+      <image class="player-btn player-btn-loop player-btn-active" 
+        wx:else
+        src="/assets/icons/顺序播放.png" 
+        bindtap="toggleLoopMode"
+      ></image>
+    </view>
+  </view>
+
+  <!-- 播放进度 -->
+  <view class="player-progress">
+    <text class="progress-time">{{currentTime}}</text>
+    <slider 
+      class="progress-slider" 
+      value="{{progress}}" 
+      activeColor="#d33a31" 
+      backgroundColor="rgba(0, 0, 0, 0.1)" 
+      block-size="12" 
+      block-color="#d33a31" 
+      active-size="16" 
+      active-shape="circle" 
+      bindchanging="onSliderChanging" 
+      bindchange="onSliderChange"
+    />
+    <text class="progress-time">{{duration}}</text>
+  </view>
+</view>

@@ -1,0 +1,18 @@
+<!-- welcome-modal.wxml -->
+<view class="welcome-modal" wx:if="{{visible}}">
+  <view class="modal-content">
+    <!-- 顶部logo -->
+    <view class="logo-container">
+      <image class="logo" src="/assets/icons/logo.svg" mode="aspectFit"></image>
+    </view>
+    
+    <!-- 标题 -->
+    <view class="title">ShiHua Music</view>
+    
+    <!-- 介绍信息 -->
+    <view class="description">{{description}}</view>
+    
+    <!-- 确定按钮 -->
+    <button class="confirm-btn" bindtap="onConfirm">确定</button>
+  </view>
+</view>

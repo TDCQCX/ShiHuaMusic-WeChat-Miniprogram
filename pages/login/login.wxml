@@ -1,0 +1,56 @@
+<!-- login.wxml -->
+<view class="container">
+  <view class="login-form">
+    <view class="logo">
+      <image src="/assets/icons/logo.svg" mode="aspectFit"></image>
+      <text class="title">ShiHua Music</text>
+    </view>
+    
+    <text class="form-subtitle">输入您的邮箱以登录您的账户</text>
+
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">✉️</text>
+        <input
+          type="text"
+          placeholder="邮箱"
+          bindinput="onEmailInput"
+          value="{{email}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx;"
+        />
+      </view>
+      <text wx:if="{{errors.email}}" class="error-message">{{errors.email}}</text>
+    </view>
+
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">🔒</text>
+        <input
+          password
+          placeholder="密码"
+          bindinput="onPasswordInput"
+          value="{{password}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx;"
+        />
+      </view>
+      <text wx:if="{{errors.password}}" class="error-message">{{errors.password}}</text>
+    </view>
+
+    <button
+      type="primary"
+      bindtap="handleLogin"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+      style="width: 100%; margin-top: 40rpx; line-height: 90rpx; border-radius: 8rpx;"
+    >
+      登录
+    </button>
+
+    <view class="signup-text">
+      没有账户？
+      <text bindtap="switchToRegister" class="link-text">注册</text>
+    </view>
+  </view>
+</view>

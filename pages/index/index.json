@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "copyright": "/components/copyright/copyright",
+    "welcome-modal": "/components/welcome-modal/welcome-modal"
+  },
+  "navigationBarTitleText": "ShiHua Music",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

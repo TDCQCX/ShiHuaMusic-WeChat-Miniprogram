@@ -1,0 +1,140 @@
+/* library.wxss */
+.container {
+  padding-bottom: 60rpx; /* 底部安全区域 */
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 20rpx;
+}
+
+/* 通用区域样式 */
+.section-list {
+  margin-top: 30rpx;
+  background-color: #ffffff;
+  padding: 30rpx 20rpx;
+  border-radius: 20px;
+}
+
+.section-header {
+  margin-top: -20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.more {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 歌曲列表样式 */
+.song-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 15rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.song-cover {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 8rpx;
+}
+
+.song-info {
+  flex: 1;
+  margin-left: 20rpx;
+  overflow: hidden;
+}
+
+.song-name {
+  font-size: 32rpx;
+  color: #333333;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 8rpx;
+}
+
+.song-artist {
+  font-size: 28rpx;
+  color: #999999;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.song-duration {
+  font-size: 26rpx;
+  color: #999999;
+  margin-left: 10rpx;
+}
+
+/* 加载中状态 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100rpx 0;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 空状态 */
+.empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100rpx 0;
+  font-size: 28rpx;
+  color: #999999;
+}
+
+/* 点击效果 */
+.song-item:active {
+  background-color: #f5f5f5;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* 回到顶部按钮样式 */
+.back-top-btn {
+  position: fixed;
+  right: 30rpx;
+  bottom: 300rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.arrow-up {
+  width: 20rpx;
+  height: 20rpx;
+  border-top: 4rpx solid #333;
+  border-right: 4rpx solid #333;
+  transform: rotate(-45deg);
+  margin-top: 4rpx;
+}

@@ -1,0 +1,34 @@
+<!-- recent-play.wxml -->
+<view class="container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <view class="header-title">最近播放</view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content-area">
+    <view wx:if="{{recentSongs.length > 0}}">
+      <view class="song-list">
+        <view wx:for="{{recentSongs}}" wx:key="songId" class="song-item" bindtap="playSong" data-id="{{item.songId}}">
+          <view class="song-index">{{index + 1}}</view>
+          <view class="song-info">
+            <text class="song-name">{{item.songName}}</text>
+            <text class="song-artist">{{item.artistName}}</text>
+          </view>
+          <view class="song-duration">{{item.duration}}</view>
+        </view>
+      </view>
+    </view>
+    <view wx:else class="empty-state">
+      <image class="empty-icon" src="/assets/icons/history.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无播放记录</text>
+      <button class="empty-button" bindtap="goToDiscover">去发现音乐</button>
+    </view>
+  </view>
+
+  <!-- 底部版权信息 -->
+  <copyright/>
+</view>
+
+<!-- 底部播放器组件 -->
+<player />

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "我的喜欢",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "copyright": "/components/copyright/copyright"
+  }
+}

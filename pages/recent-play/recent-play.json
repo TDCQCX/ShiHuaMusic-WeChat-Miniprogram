@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "最近播放",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "copyright": "/components/copyright/copyright"
+  }
+}

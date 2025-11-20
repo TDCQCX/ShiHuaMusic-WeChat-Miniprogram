@@ -1,0 +1,64 @@
+<!-- index.wxml -->
+<view class="container">
+  <!-- 轮播图 -->
+  <view class="banner-container">
+    <swiper
+      indicator-dots
+      autoplay
+      circular
+      interval="3000"
+      duration="500"
+      style="height: 300rpx;"
+    >
+      <block wx:for="{{banners}}" wx:key="index">
+        <swiper-item>
+          <image src="{{item.imageUrl}}" mode="aspectFit" class="banner-image"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 推荐歌单 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">推荐歌单</text>
+    </view>
+    <view class="playlist-grid">
+      <block wx:for="{{recommendedPlaylists}}" wx:key="playlistId">
+        <view class="playlist-item" bindtap="navigateToPlaylistDetail" data-id="{{item.playlistId}}">
+          <image src="{{item.coverUrl}}" mode="aspectFill" class="playlist-cover"></image>
+          <text class="playlist-title">{{item.title}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 推荐歌曲 -->
+  <view class="section-list">
+    <view class="section-header">
+      <text class="section-title">推荐歌曲</text>
+      <text class="more" bindtap="navigateToAllSongs">更多 ></text>
+    </view>
+    <view class="song-list">
+      <block wx:for="{{recommendedSongs}}" wx:key="songId">
+        <view class="song-item" bindtap="playSong" data-index="{{index}}" data-id="{{item.songId}}">
+          <image src="{{item.coverUrl}}" mode="aspectFill" class="song-cover"></image>
+          <view class="song-info">
+            <text class="song-name">{{item.songName}}</text>
+            <text class="song-artist">{{item.artistName}}</text>
+          </view>
+          <view class="song-duration">{{item.duration}}</view>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 底部版权信息 -->
+  <copyright/>
+</view>
+
+<!-- 底部播放器组件 -->
+<player />
+
+<!-- 欢迎弹窗组件 -->
+<welcome-modal visible="{{showWelcomeModal}}" bind:confirm="onWelcomeModalConfirm" />

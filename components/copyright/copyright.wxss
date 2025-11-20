@@ -1,0 +1,25 @@
+/* 版权信息组件样式 */
+.copyright-container {
+  width: 100%;
+  padding: 20rpx 0;
+  border-top: 1px solid rgb(192, 185, 185);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.copyright-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.copyright-text {
+  font-size: 22rpx;
+  color: #999;
+  line-height: 1.4;
+  text-align: center;
+}

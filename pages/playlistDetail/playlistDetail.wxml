@@ -1,0 +1,138 @@
+<!--pages/playlistDetail/playlistDetail.wxml-->
+<view class="container">
+  <!-- 加载提示 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">正在加载歌单信息...</text>
+  </view>
+
+  <!-- 歌单详情内容 -->
+  <scroll-view wx:else scroll-y class="playlist-content">
+    <!-- 错误提示条 -->
+    <view wx:if="{{error}}" class="error-bar">
+      <text class="error-bar-text">{{error}}</text>
+      <button bindtap="onPullDownRefresh" class="retry-bar-btn">重试</button>
+    </view>
+    <!-- 歌单信息区域 -->
+    <view class="playlist-info">
+      <!-- 封面和基本信息 -->
+      <view class="playlist-header">
+        <image class="cover-image" src="{{playlist.coverImgUrl}}" mode="aspectFill"></image>
+        <view class="playlist-meta">
+          <view class="playlist-title">{{playlist.name}}</view>
+          <view class="playlist-stats">
+            <text>{{playlist.trackCount}}首歌曲</text>
+          </view>
+          <view class="creator-info">
+            <image class="creator-avatar" src="{{playlist.creator.avatarUrl}}" mode="aspectFill"></image>
+            <text class="creator-name">{{playlist.creator.nickname}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 歌单描述 -->
+      <view class="playlist-description" wx:if="{{playlist.description}}">
+        <text>{{playlist.description}}</text>
+      </view>
+
+      <!-- 标签 -->
+      <view class="playlist-tags" wx:if="{{playlist.tags.length > 0}}">
+        <view wx:for="{{playlist.tags}}" wx:key="index" class="tag-item">
+          {{item}}
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="action-buttons">
+        <button bindtap="toggleCollect" class="action-btn collect-btn">
+          <image class="btn-icon" src="{{isCollected ? '/assets/icons/收藏-激活.png' : '/assets/icons/收藏.png'}}" mode="aspectFit"></image>
+          <text>{{isCollected ? '已收藏' : '收藏'}}</text>
+        </button>
+        <button bindtap="handlePlayAll" class="action-btn play-all-btn primary">
+          <image class="btn-icon" src="/assets/icons/播放.png" mode="aspectFit"></image>
+          <text>播放全部</text>
+        </button>
+      </view>
+    </view>
+
+    <!-- 标签页切换 -->
+    <view class="tab-container">
+      <view class="tabs">
+        <view class="tab {{activeTab === 'songs' ? 'active' : ''}}" data-tab="songs" bindtap="switchTab">
+          <text>歌曲列表</text>
+        </view>
+        <view class="tab {{activeTab === 'comments' ? 'active' : ''}}" data-tab="comments" bindtap="switchTab">
+          <text>评论 ({{comments.length}})</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 歌曲列表内容 -->
+    <view class="tab-content" wx:if="{{activeTab === 'songs'}}">
+      <view class="songs-list">
+        <view wx:for="{{songs}}" wx:key="songId" class="song-item" bindtap="handlePlaySong" data-index="{{index}}">
+          <view class="song-index">{{index + 1}}</view>
+          <view class="song-info">
+            <view class="song-name">{{item.songName}}</view>
+            <view class="song-meta">
+              <text class="artist-name">{{item.artistName}}</text>
+              <text wx:if="{{item.album}}" class="album-name">{{item.album}}</text>
+            </view>
+          </view>
+          <view class="song-duration">{{formatDuration(item.duration)}}</view>
+        </view>
+        <view wx:if="{{songs.length === 0}}" class="empty-list">
+          <text>歌单暂无歌曲</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 评论区内容 -->
+    <view class="tab-content" wx:elif="{{activeTab === 'comments'}}">
+      <!-- 评论输入框 -->
+      <view class="comment-input-container">
+        <input class="comment-input" 
+               placeholder="写下你的评论..." 
+               value="{{commentContent}}" 
+               bindinput="onCommentInput" 
+               maxlength="{{maxLength}}"
+               confirm-type="send" 
+               bindconfirm="handleComment"
+        />
+        <button bindtap="handleComment" class="send-btn" disabled="{{!commentContent.trim()}}">
+          发送
+        </button>
+      </view>
+      <text class="char-count">{{commentContent.length}}/{{maxLength}}</text>
+
+      <!-- 评论列表 -->
+      <view class="comments-list">
+        <view wx:for="{{comments}}" wx:key="commentId" class="comment-item">
+          <view class="comment-header">
+            <image class="user-avatar" src="{{item.userAvatar}}" mode="aspectFill"></image>
+            <view class="comment-meta">
+              <text class="username">{{item.username}}</text>
+              <text class="comment-time">{{item.createTime}}</text>
+            </view>
+          </view>
+          <view class="comment-content">{{item.content}}</view>
+          <view class="comment-actions">
+            <view class="like-action" bindtap="handleLike" data-id="{{item.commentId}}">
+              <image class="like-icon" src="/assets/icons/点赞.png" mode="aspectFit"></image>
+              <text class="like-count">{{item.likeCount}}</text>
+            </view>
+            <view class="delete-action" bindtap="handleDelete" data-id="{{item.commentId}}">
+              <text>删除</text>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{comments.length === 0}}" class="empty-comments">
+          <text>暂无评论，快来发表第一条评论吧</text>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 播放器组件 -->
+  <player></player>
+</view>

@@ -1,0 +1,95 @@
+<!-- pages/register/register.wxml -->
+<view class="container">
+  <view class="register-form">
+    <view class="logo">
+      <image src="/assets/icons/logo.svg" mode="aspectFit"></image>
+      <text class="title">ShiHua Music</text>
+    </view>
+    
+    <text class="form-subtitle">创建一个新账户</text>
+
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">👤</text>
+        <input
+          type="text"
+          placeholder="用户名"
+          bindinput="onUsernameInput"
+          value="{{username}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx;"
+        />
+      </view>
+      <text wx:if="{{errors.username}}" class="error-message">{{errors.username}}</text>
+    </view>
+
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">✉️</text>
+        <input
+          type="text"
+          placeholder="邮箱"
+          bindinput="onEmailInput"
+          value="{{email}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx;"
+        />
+        <button
+          type="text"
+          size="mini"
+          disabled="{{countdown > 0 || loading}}"
+          bindtap="handleSendCode"
+          class="send-code-btn"
+        >
+          {{countdown > 0 ? countdown + 's后重试' : '获取验证码'}}
+        </button>
+      </view>
+      <text wx:if="{{errors.email}}" class="error-message">{{errors.email}}</text>
+    </view>
+
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">🔑</text>
+        <input
+          type="text"
+          placeholder="验证码"
+          bindinput="onVerificationCodeInput"
+          value="{{verificationCode}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx;"
+        />
+      </view>
+      <text wx:if="{{errors.verificationCode}}" class="error-message">{{errors.verificationCode}}</text>
+    </view>
+
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">🔒</text>
+        <input
+          password
+          placeholder="密码"
+          bindinput="onPasswordInput"
+          value="{{password}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx;"
+        />
+      </view>
+      <text wx:if="{{errors.password}}" class="error-message">{{errors.password}}</text>
+    </view>
+
+    <button
+      type="primary"
+      bindtap="handleRegister"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+      style="width: 100%; margin-top: 40rpx; line-height: 90rpx; border-radius: 8rpx;"
+    >
+      注册
+    </button>
+
+    <view class="login-text">
+      已有账户？
+      <text bindtap="switchToLogin" class="link-text">登录</text>
+    </view>
+  </view>
+</view>

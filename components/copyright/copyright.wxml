@@ -1,0 +1,7 @@
+<!-- 底部版权信息组件 -->
+<view class="copyright-container">
+  <view class="copyright-content">
+    <text class="copyright-text">技术支持：TDCQCX</text>
+    <text class="copyright-text">copyright © 2025</text>
+  </view>
+</view>

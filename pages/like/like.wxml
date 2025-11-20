@@ -1,0 +1,29 @@
+<!-- like.wxml -->
+<view class="container">
+  <view class="header">
+    <text class="title">我喜欢的音乐</text>
+  </view>
+
+  <view wx:if="{{songs.length > 0}}" class="song-list">
+    <block wx:for="{{songs}}" wx:key="songId">
+      <view class="song-item" bindtap="playSong" data-id="{{item.songId}}">
+        <view class="song-index">{{index + 1}}</view>
+        <view class="song-info">
+          <text class="song-name">{{item.songName}}</text>
+          <text class="song-artist">{{item.artistName}}</text>
+        </view>
+        <view class="song-actions">
+          <view class="like-btn active" bindtap="toggleLike" data-id="{{item.songId}}"></view>
+          <view class="more-btn" bindtap="showMoreOptions" data-id="{{item.songId}}"></view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <view wx:else class="empty-state">
+    <image src="/assets/icons/收藏.png" class="empty-icon"></image>
+    <text class="empty-text">暂无收藏的音乐</text>
+    <text class="empty-subtext">收藏的音乐会显示在这里</text>
+    <button class="go-discover-btn" bindtap="goToDiscover">去发现音乐</button>
+  </view>
+</view>

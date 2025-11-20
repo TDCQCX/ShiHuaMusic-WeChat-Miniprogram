@@ -1,0 +1,124 @@
+/* player.wxss */
+.player-container {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 96%;
+  background: #fff;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  border-radius: 15px;
+  margin-bottom: 4%;
+}
+
+/* 底部播放器主界面 */
+.player-main {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 30rpx;
+  min-height: 120rpx;
+}
+
+.player-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+.player-cover {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 12rpx;
+  margin-right: 20rpx;
+  background-color: #f5f5f5;
+}
+
+.player-text {
+  flex: 1;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.player-song-name {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 6rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player-artist-name {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  margin-left: 20rpx;
+}
+.player-btn {
+  width: 44rpx;
+  height: 44rpx;
+  margin: 0 16rpx;
+  color: #333;
+}
+
+.player-btn-play {
+  width: 60rpx;
+  height: 60rpx;
+  color: #d33a31;
+}
+
+.player-btn-loop {
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 8rpx;
+  color: #999;
+}
+
+.player-btn-active {
+  color: #d33a31;
+}
+
+.player-progress {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx 30rpx;
+}
+
+.progress-time {
+  font-size: 20rpx;
+  color: #999;
+  min-width: 50rpx;
+}
+
+.progress-slider {
+  flex: 1;
+  margin: 0 16rpx;
+}
+
+/* 适配安全区域 */
+.player-main {
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom, 0));
+}
+
+.player-progress {
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom, 0));
+}
+
+/* 隐藏滑块上的文字 */
+.progress-slider::after {
+  display: none;
+}

@@ -1,0 +1,50 @@
+<!-- library.wxml - 全部音乐页面 -->
+<view class="container">
+  <!-- 推荐歌曲 -->
+  <view class="section-list">
+    <view class="section-header">
+      <text class="section-title">全部歌曲</text>
+    </view>
+    <view class="song-list">
+      <!-- 歌曲列表 -->
+      <block wx:for="{{recommendedSongs}}" wx:key="songId">
+        <view class="song-item" bindtap="playSong" data-song="{{item}}" data-index="{{index}}">
+          <image src="{{item.coverUrl}}" mode="aspectFill" class="song-cover"></image>
+          <view class="song-info">
+            <text class="song-name">{{item.songName}}</text>
+            <text class="song-artist">{{item.artistName}}</text>
+          </view>
+          <view class="song-duration">{{item.duration}}</view>
+        </view>
+      </block>
+      
+      <!-- 加载中状态 - 显示在列表底部 -->
+      <block wx:if="{{isLoading}}">
+        <view class="loading-container">
+          <text>加载中...</text>
+        </view>
+      </block>
+      
+      <!-- 空状态 - 仅在列表为空且未加载时显示 -->
+      <block wx:if="{{!isLoading && recommendedSongs.length === 0}}">
+        <view class="empty-container">
+          <text>暂无歌曲</text>
+        </view>
+      </block>
+    </view>
+  </view>
+  
+  <!-- 底部版权信息 -->
+  <!-- 回到顶部按钮 -->
+<view 
+  wx:if="{{showBackTop}}" 
+  class="back-top-btn"
+  bindtap="onBackTopClick"
+>
+  <view class="arrow-up"></view>
+</view>
+
+<copyright></copyright>
+<!-- 底部播放器组件 -->
+<player />
+</view>

@@ -1,0 +1,471 @@
+/* app.wxss - 全局样式 */
+
+/* 重置样式 */
+page,
+view,
+text,
+image,
+scroll-view,
+swiper,
+button,
+input,
+textarea,
+label,
+navigator {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+page {
+  background-color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #333;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+/* 容器样式 */
+.container {
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+
+/* 标题样式 */
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  margin: 40rpx 0 20rpx;
+  color: #333;
+}
+
+title-bar {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  padding: 30rpx 0;
+  position: relative;
+}
+
+title-bar::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60rpx;
+  height: 6rpx;
+  background-color: #d33a31;
+  border-radius: 3rpx;
+}
+
+/* 按钮样式重置 */
+button {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 28rpx;
+}
+
+button::after {
+  border: none;
+}
+
+.primary-button {
+  background-color: #d33a31;
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  padding: 20rpx 80rpx;
+  line-height: normal;
+}
+
+.primary-button::after {
+  border: none;
+}
+
+/* 输入框样式重置 */
+input {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 28rpx;
+}
+
+input::-webkit-input-placeholder {
+  color: #999;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+/* 加载动画 */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60rpx 0;
+}
+
+.loading text {
+  font-size: 28rpx;
+  color: #999;
+  margin-left: 20rpx;
+}
+
+/* 空状态 */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 100rpx 0;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.empty image {
+  width: 160rpx;
+  height: 160rpx;
+  opacity: 0.5;
+  margin-bottom: 30rpx;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #666;
+  margin-bottom: 10rpx;
+}
+
+.empty-subtext {
+  font-size: 28rpx;
+  color: #999;
+}
+
+/* 卡片样式 */
+.card {
+  background-color: #fff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+/* 分割线 */
+.divider {
+  height: 20rpx;
+  background-color: #f5f5f5;
+}
+
+/* 文字省略 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+/* 播放条全局样式 */
+.global-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110rpx;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-top: 1rpx solid #eee;
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  z-index: 100;
+}
+
+.player-cover {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.player-info {
+  flex: 1;
+}
+
+.player-song-name {
+  font-size: 32rpx;
+  color: #333;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player-artist-name {
+  font-size: 24rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+}
+
+.player-btn {
+  width: 60rpx;
+  height: 60rpx;
+  margin-left: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 浮动操作按钮 */
+.fab {
+  position: fixed;
+  right: 40rpx;
+  bottom: 140rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background-color: #d33a31;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6rpx 20rpx rgba(0, 0, 0, 0.15);
+  z-index: 99;
+}
+
+/* 动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.rotate {
+  animation: rotate 20s linear infinite;
+}
+
+/* 安全区域适配 */
+.safe-area {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+/* 响应式布局辅助类 */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 颜色变量 */
+:root {
+  --primary-color: #d33a31;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
+  --background-primary: #ffffff;
+  --background-secondary: #f5f5f5;
+  --border-color: #eeeeee;
+  --success-color: #52c41a;
+  --warning-color: #faad14;
+  --error-color: #f5222d;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mt-10 {
+  margin-top: 10rpx;
+}
+
+.mt-20 {
+  margin-top: 20rpx;
+}
+
+.mt-30 {
+  margin-top: 30rpx;
+}
+
+.mb-10 {
+  margin-bottom: 10rpx;
+}
+
+.mb-20 {
+  margin-bottom: 20rpx;
+}
+
+.mb-30 {
+  margin-bottom: 30rpx;
+}
+
+.ml-10 {
+  margin-left: 10rpx;
+}
+
+.ml-20 {
+  margin-left: 20rpx;
+}
+
+.mr-10 {
+  margin-right: 10rpx;
+}
+
+.mr-20 {
+  margin-right: 20rpx;
+}
+
+/* 文本样式 */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-primary {
+  color: #1677FF;
+}
+
+.text-danger {
+  color: #FF4D4F;
+}
+
+.text-success {
+  color: #52C41A;
+}
+
+.text-warning {
+  color: #FAAD14;
+}
+
+.text-muted {
+  color: #999999;
+}
+
+/* 背景样式 */
+.bg-primary {
+  background-color: #1677FF;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.bg-gray {
+  background-color: #f5f5f5;
+}
+
+/* 音乐相关样式 */
+.song-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background-color: #ffffff;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.song-info {
+  flex: 1;
+  margin-left: 20rpx;
+}
+
+.song-name {
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.song-artist {
+  font-size: 28rpx;
+  color: #999999;
+}
+
+.song-cover {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+}
+
+/* 底部播放器样式占位 */
+.player-placeholder {
+  height: 120rpx;
+}

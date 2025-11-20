@@ -1,0 +1,65 @@
+{
+  "debug": true,
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/user/user",
+    "pages/playlistDetail/playlistDetail",
+    "pages/library/library",
+    "pages/like/like",
+    "pages/user/user-edit",
+    "pages/recent-play/recent-play",
+    "pages/my-playlists/my-playlists",
+    "pages/my-favorites/my-favorites"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "ShiHua Music",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false,
+    "onReachBottomDistance": 50
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#1677FF",
+    "backgroundColor": "#ffffff",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "发现",
+        "iconPath": "assets/icons/find.png",
+        "selectedIconPath": "assets/icons/find-active.png"
+      },
+      {
+        "pagePath": "pages/library/library",
+        "text": "全部音乐",
+        "iconPath": "assets/icons/music.png",
+        "selectedIconPath": "assets/icons/music-active.png"
+      },
+      {
+      "pagePath": "pages/user/user",
+      "text": "个人主页",
+      "iconPath": "assets/icons/mine.png",
+      "selectedIconPath": "assets/icons/mine-active.png"
+    }
+    ]
+  },
+  "requiredBackgroundModes": ["audio"],
+  "usingComponents": {
+    "player": "./components/player/player",
+    "copyright": "/components/copyright/copyright"
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "用于完善用户体验"
+    }
+  },
+  "lazyCodeLoading": "requiredComponents"
+}

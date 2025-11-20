@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "全部音乐",
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "copyright": "/components/copyright/copyright"
+  }
+}

@@ -1,0 +1,91 @@
+<!-- user-edit.wxml -->
+<view class="container">
+  <view class="edit-form">
+    <text class="title">编辑个人信息</text>
+
+    <!-- 用户头像 -->
+    <view class="avatar-section">
+      <view class="avatar-wrapper" bindtap="handleChooseAvatar">
+        <image class="avatar" src="{{userForm.avatarUrl || '/assets/icons/默认头像.png'}}" mode="aspectFill"></image>
+      </view>
+      <text class="avatar-hint">点击更换头像</text>
+    </view>
+
+    <!-- 用户信息表单 -->
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">用户名</text>
+        <input
+          type="text"
+          placeholder="用户名"
+          bindinput="onUsernameInput"
+          value="{{userForm.username}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx;"
+        />
+      </view>
+      <text wx:if="{{errors.username}}" class="error-message">{{errors.username}}</text>
+    </view>
+
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">手机号</text>
+        <input
+          type="number"
+          placeholder="手机号"
+          bindinput="onPhoneInput"
+          value="{{userForm.phone}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx;"
+        />
+      </view>
+      <text wx:if="{{errors.phone}}" class="error-message">{{errors.phone}}</text>
+    </view>
+
+    <view class="form-group">
+      <view class="input-wrapper">
+        <text class="input-icon">E-mail</text>
+        <input
+          type="text"
+          placeholder="邮箱"
+          value="{{userForm.email}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 0 20rpx; color: #666; background-color: #f8f8f8;"
+          disabled="true"
+        />
+      </view>
+      <text class="hint-message">邮箱作为账号标识，不可修改</text>
+    </view>
+
+    <view class="form-group">
+      <view class="textarea-wrapper">
+        <text class="input-icon textarea-icon">个人简介</text>
+        <textarea
+          placeholder="编辑个人简介"
+          bindinput="onIntroductionInput"
+          value="{{userForm.introduction}}"
+          placeholder-style="color: #999;"
+          style="flex: 1; padding: 20rpx; min-height: 120rpx;"
+          maxlength="100"
+          show-confirm-bar="false"
+        />
+      </view>
+      <text class="char-count">{{userForm.introduction.length}}/100</text>
+    </view>
+
+    <!-- 按钮组 -->
+    <button
+      type="primary"
+      bindtap="handleSubmit"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+      style="width: 100%; margin-top: 40rpx; line-height: 90rpx; border-radius: 8rpx;"
+    >
+      更新信息
+    </button>
+
+  </view>
+    
+    <!-- 底部版权信息 -->
+    <copyright/>
+</view>
